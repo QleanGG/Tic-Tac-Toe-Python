@@ -1,3 +1,8 @@
+import os
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 winningCombinations = [
             [0, 1, 2], [3, 4, 5], [6, 7, 8], # Rows
             [0, 3, 6], [1, 4, 7], [2, 5, 8], # Columns
@@ -17,6 +22,7 @@ def user_turn(choice,game_arr,letter):
 def play_game():
     game_arr = ['-'] * 9
     letter = 'X'
+    clear_screen()
     while (True):
         display_board(game_arr)
         try:
@@ -28,17 +34,10 @@ def play_game():
         except ValueError:
             print("Invalid input. Please enter a number!")
 
-        if check_winner(game_arr,'X') == True:
-            display_board(game_arr)
-            print ('X' +' wins!\n')
-            break
+        if check_winner(game_arr,'X') == True:break
+        elif check_winner(game_arr,'O') == True:break
 
-        if check_winner(game_arr,'O') == True:
-            display_board(game_arr)
-            print ('O' +' wins!\n')
-            break
-
-        if board_full(game_arr):
+        elif board_full(game_arr):
             display_board(game_arr)
             print ('It is a Draw!\n')
             break
@@ -47,6 +46,8 @@ def play_game():
 def check_winner(board, letter):
     for combo in winningCombinations:
         if all(board[i] == letter for i in combo):
+            display_board(board)
+            print (letter +' wins!\n')
             return True
     return False
 
@@ -67,7 +68,8 @@ def main():
         if user_choice == '0':
             print("Goodbye")
             exit()
-        if user_choice == '1':play_game()
+        elif user_choice == '1':play_game()
+        else: print("Pick a valid choice")
 
 # start of the program
 while __name__ == "__main__":
