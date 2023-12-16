@@ -71,7 +71,6 @@ def play_player():
             break
 
 def cpu_make_move(board):
-    
     #checks to win
     for i in range(9):
         if board[i] == '-':
