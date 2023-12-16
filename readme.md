@@ -8,7 +8,7 @@ You are able to play the game two vesions:
 app.py will allow you to play Tic Tac Toe straight from the command line!
 **You can play against another player or against the computer!**
 
-### *Command Line Version*
+### *Gui Version*
 game.py will allow you to play Tic Tac Toe in a Window!
 **You can play against another player or against the computer!**
 
